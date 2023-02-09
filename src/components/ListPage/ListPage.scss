@@ -1,0 +1,13 @@
+.grid-card {
+    line-height: normal;
+    border-radius: 30px;
+
+    .card-tag {
+        margin-right: 10px;
+        width: fit-content;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

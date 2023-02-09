@@ -1,0 +1,14 @@
+.navbar {
+    border-radius: 100px;
+    max-width: 400px;
+    margin: 0 auto;
+
+    .menu-bar-pokemon-logo {
+        width: 25%;
+    }
+
+    button svg {
+        display: flex;
+        font-size: 3rem;
+    }
+}
