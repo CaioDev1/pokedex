@@ -1,0 +1,9 @@
+.pokemon-card-btn {
+    position: relative;
+    top: 0;
+    transition: all 0.3s ease-in-out !important;
+
+    &:hover {
+        transform: translateY(-10px);
+    }
+}

@@ -1,13 +1,34 @@
-.grid-card {
-    line-height: normal;
-    border-radius: 30px;
+#background-page-icon {
+    font-size: 1000px;
+    position: fixed;
+    top: -400px;
+    left: -200px;
+    opacity: 0.1;
+}
 
-    .card-tag {
-        margin-right: 10px;
-        width: fit-content;
-
-        &:last-child {
-            margin-right: 0;
+.dashboard-container {
+    .grid-card {
+        text-align: center;
+        /* width: 250px;
+        height: 200px; */
+        margin-top: 60px;
+    
+        & > * {
+            line-height: 40px;
+        }
+    
+        .card-image {
+            top: -60px;
+        }
+    
+        .card-tag {
+            margin-right: 10px;
+            width: fit-content;
+            line-height: initial;
+    
+            &:last-child {
+                margin-right: 0;
+            }
         }
     }
 }
