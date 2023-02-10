@@ -6,8 +6,8 @@ import './AsideMenu.scss'
 
 export const AsideMenu = (props: {pokemon: any}) => {
     return (
-        <Box sx={{height: '100vh', padding: '2rem 0', minWidth: '300px', position: 'sticky', top: '3.5rem'}}>
-            <Fade in={props.pokemon} timeout={800} mountOnEnter unmountOnExit>
+        <Box sx={{padding: '2rem 0', minWidth: '300px', position: 'sticky', top: '8rem'}}>
+            <Fade in={!!props.pokemon} timeout={800} mountOnEnter unmountOnExit>
                 <div>
                     <CardBody cssClass={['side-menu']} style={{paddingTop: '5rem'}}>
                         <CardImage topPosition={-70} width='50%' src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png' />

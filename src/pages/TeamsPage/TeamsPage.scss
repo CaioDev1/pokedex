@@ -1,0 +1,25 @@
+
+.teams-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 0 0;
+    
+    .team-accordion {
+        max-width: 800px;
+        border-radius: 50px !important;
+        overflow: hidden;
+        transition: border-radius 0.3s ease-in-out;
+
+        margin-bottom: 1rem;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        &.Mui-expanded {
+            border-radius: 25px !important;
+        }
+    }
+}
