@@ -2,25 +2,35 @@ import React, { FC } from "react"
 import { PokemonListSkeleton } from "../../pages/ListPage/PokemonListSkeleton/PokemonListSkeleton";
 
 interface Props {
-    isLoadingComplete: boolean
+    isLoadingComplete?: boolean
 }
 
-export const withLoading = <P extends object>(WrappedComponent: FC<P>, skeletonQuantity?: number) => {
+export const withLoading = <P extends object>(WrappedComponent: FC<P>, skeletonParams: {columns: number, rows: number}) => {
     return class WithLoading extends React.Component<P & Props> {
-        state = {
+        state: Props = {
             isLoadingComplete: false
         };
 
+        private _isMounted: boolean = true
+
         componentDidMount() {
-            setTimeout(() => this.setState({isLoadingComplete: true}), 1000)
-        }   
+            this._isMounted = true;
+
+            setTimeout(() => {
+                if(this._isMounted) this.setState({isLoadingComplete: true})
+            }, 1000)
+        }
+
+        componentWillUnmount() {
+            this._isMounted = false;
+        }
 
         render() {
             const {isLoadingComplete} = this.state as Props
             
             return isLoadingComplete
-                ? <WrappedComponent {...(this.props as P)} />
-                :  <PokemonListSkeleton quantity={skeletonQuantity} />
+                ? <WrappedComponent {...this.props} />
+                :  <PokemonListSkeleton rows={skeletonParams.rows} columns={skeletonParams.columns} />
         }
     }
 }

@@ -1,11 +1,10 @@
 import { Search as SearchIcon } from '@mui/icons-material';
-import {Grid, Paper, Grow, InputBase, styled, alpha } from '@mui/material';
-import { FC, Fragment, memo, useEffect, useState } from 'react';
+import {Paper, InputBase, styled, alpha } from '@mui/material';
+import { Fragment, memo, useEffect, useState } from 'react';
 
 import { AsideMenu } from '../../components/AsideMenu/AsideMenu';
-import { PokemonCard } from '../../components/PokemonCard/PokemonCard';
 import './ListPage.scss';
-import {withLoading} from '../../services/HOC/withLoading'
+import PokemonList from './PokemonList/PokemonList';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -44,12 +43,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export const ListPage = () => {
     const [currentPokemonPreview, setCurrentPokemonPreview] = useState<any>(null)
+    const [pokemonsList, setPokemonsList] = useState<any[]>(new Array(25).fill(''))
 
     function handlePokemonCardHover(pokemon: any) {
         setCurrentPokemonPreview(pokemon)
     }
 
-    const ListPageContent: FC<any> = memo((props: any) => (
+    const ListPageContent = (
         <Fragment>
             <main className='list-page' style={{padding: '2rem 0'}}>
                 <Paper elevation={20} className='mb-3' style={{borderRadius: 15, overflow: 'hidden'}}>
@@ -64,28 +64,13 @@ export const ListPage = () => {
                         />
                     </Search>
                 </Paper>
-                <Grid container>
-                    {new Array(25).fill('').map((item, index) => {
-                        return (
-                            <Grid item key={index + 1} xs={3}>
-                                <Grow in mountOnEnter unmountOnExit>
-                                    <div>
-                                        <PokemonCard
-                                            onHover={handlePokemonCardHover}
-                                            onMouseOut={() => {}} 
-                                        />
-                                    </div>
-                                </Grow>
-                            </Grid>
-                        )
-                    })}
-                </Grid>
+                <PokemonList handlePokemonCardHover={handlePokemonCardHover} pokemonsList={pokemonsList} />
             </main>
             <AsideMenu pokemon={currentPokemonPreview} />
         </Fragment>
-    ))
+    )
 
-    const ListPageContentWithLoading = withLoading(ListPageContent, 43)
 
-    return <ListPageContentWithLoading />
+
+    return ListPageContent
 }
