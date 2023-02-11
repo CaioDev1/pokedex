@@ -2,18 +2,27 @@ import {Grid, Grow} from '@mui/material';
 import { useEffect, useState } from 'react';
 import { PokemonCard } from '../../../components/PokemonCard/PokemonCard';
 import {withLoading} from '../../../services/HOC/withLoading'
+import { IPokemonListSkeleton, PokemonListSkeleton } from '../PokemonListSkeleton/PokemonListSkeleton';
 
-const PokemonList = ({pokemonsList, handlePokemonCardHover}: {pokemonsList: any[], handlePokemonCardHover: (pokemon: any) => void}) => {
-    
+export interface IPokemonList {
+    pokemonsList: any[], 
+    handlePokemonCardHover?: (pokemon: any) => void,
+    skeletonParams?: IPokemonListSkeleton
+}
+
+const List = ({
+    pokemonsList, 
+    handlePokemonCardHover,
+}: IPokemonList) => {
     return (
-        <Grid container spacing={2} padding='1rem'>
+        <Grid container spacing={2} padding='1rem' display='flex' justifyContent='center'>
             {pokemonsList.map((item, index) => {
                 return (
                     <Grid item key={index + 1} minWidth={250} xs={2} display='flex' justifyContent='center'>
                         <Grow in mountOnEnter unmountOnExit>
                             <div>
                                 <PokemonCard
-                                    onHover={handlePokemonCardHover}
+                                    onHover={handlePokemonCardHover && handlePokemonCardHover}
                                     onMouseOut={() => {}} 
                                 />
                             </div>
@@ -25,4 +34,8 @@ const PokemonList = ({pokemonsList, handlePokemonCardHover}: {pokemonsList: any[
     )
 }
 
-export default withLoading(PokemonList, {rows: 4, columns: 6})
+const LoadingComponent = ({skeletonParams}: IPokemonList) => {
+    return <PokemonListSkeleton rows={skeletonParams?.rows ?? 4} columns={skeletonParams?.columns ?? 6} />
+}
+
+export const PokemonList = withLoading(List, LoadingComponent)

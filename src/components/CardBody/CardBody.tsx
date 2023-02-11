@@ -35,11 +35,3 @@ export const CardBody = (props: PropsWithChildren<{
         </Paper>
     )
 }
-
-export const CardTag = (props: PropsWithChildren<{color?: string}>) => {
-    return (
-        <Paper sx={{backgroundColor: props.color}} className='card-tag rounded text-white px-3 py-2'>
-            {props.children}
-        </Paper>
-    )
-}

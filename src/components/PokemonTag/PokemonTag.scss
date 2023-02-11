@@ -1,0 +1,10 @@
+.card-tag {
+    margin-right: 10px;
+    width: fit-content;
+    line-height: 0.8;
+    font-weight: bold;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}

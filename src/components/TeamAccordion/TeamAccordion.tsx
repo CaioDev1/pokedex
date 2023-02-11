@@ -1,6 +1,6 @@
 import { EmojiEvents, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 import { Accordion, AccordionDetails, AccordionSummary, Grid, Grow } from '@mui/material';
-import { PokemonCard } from '../../components/PokemonCard/PokemonCard';
+import {PokemonList} from '../../pages/ListPage/PokemonList/PokemonList';
 
 export const TeamAccordion = () => {
     return (
@@ -13,19 +13,7 @@ export const TeamAccordion = () => {
                 <h3 className='mx-3 mb-0'>Team 1</h3>
             </AccordionSummary>
             <AccordionDetails className='pb-4'>
-                <Grid container columns={6} spacing={2} justifyContent='space-around'>
-                    {new Array(6).fill('').map((item, index) => {
-                        return (
-                            <Grid item key={index + 1}>
-                                <Grow in mountOnEnter unmountOnExit>
-                                    <div>
-                                        <PokemonCard size='small-card' />
-                                    </div>
-                                </Grow>
-                            </Grid>
-                        )
-                    })}
-                </Grid>
+                <PokemonList skeletonParams={{rows: 1, columns: 6}}  pokemonsList={[1, 2, 3, 4, 5, 6]} />
             </AccordionDetails>
         </Accordion>
     )

@@ -1,12 +1,11 @@
 import React, { FC } from "react"
-import { PokemonListSkeleton } from "../../pages/ListPage/PokemonListSkeleton/PokemonListSkeleton";
 
 interface Props {
     isLoadingComplete?: boolean
 }
 
-export const withLoading = <P extends object>(WrappedComponent: FC<P>, skeletonParams: {columns: number, rows: number}) => {
-    return class WithLoading extends React.Component<P & Props> {
+export const withLoading = <WrappedParam extends object, LoadingParam extends object>(WrappedComponent: FC<WrappedParam>, LoadingComponent: FC<LoadingParam>) => {
+    return class WithLoading extends React.Component<WrappedParam & LoadingParam> {
         state: Props = {
             isLoadingComplete: false
         };
@@ -29,8 +28,8 @@ export const withLoading = <P extends object>(WrappedComponent: FC<P>, skeletonP
             const {isLoadingComplete} = this.state as Props
             
             return isLoadingComplete
-                ? <WrappedComponent {...this.props} />
-                :  <PokemonListSkeleton rows={skeletonParams.rows} columns={skeletonParams.columns} />
+                ? <WrappedComponent {...this.props as WrappedParam} />
+                :  <LoadingComponent {...this.props as LoadingParam} />
         }
     }
 }

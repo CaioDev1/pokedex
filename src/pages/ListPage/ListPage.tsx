@@ -4,7 +4,7 @@ import { Fragment, memo, useEffect, useState } from 'react';
 
 import { AsideMenu } from '../../components/AsideMenu/AsideMenu';
 import './ListPage.scss';
-import PokemonList from './PokemonList/PokemonList';
+import {PokemonList} from './PokemonList/PokemonList';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -21,7 +21,6 @@ const Search = styled('div')(({ theme }) => ({
   
 const SearchIconWrapper = styled('div')(({ theme }) => ({
     padding: theme.spacing(0, 2),
-    // height: '100%',
     position: 'absolute',
     pointerEvents: 'none',
     display: 'flex',
@@ -36,7 +35,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       transition: theme.transitions.create('width'),
       width: '100%',
-      [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('md')]: {
       },
     },
 }));
@@ -69,8 +68,6 @@ export const ListPage = () => {
             <AsideMenu pokemon={currentPokemonPreview} />
         </Fragment>
     )
-
-
 
     return ListPageContent
 }

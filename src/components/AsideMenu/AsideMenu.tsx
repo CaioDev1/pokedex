@@ -1,8 +1,9 @@
 import React from 'react'
 import {Box, Fade} from '@mui/material'
-import { CardBody, CardImage, CardTag } from '../CardBody/CardBody'
+import { CardBody, CardImage } from '../CardBody/CardBody'
 
 import './AsideMenu.scss'
+import { PokemonTag } from '../PokemonTag/PokemonTag'
 
 export const AsideMenu = (props: {pokemon: any}) => {
     return (
@@ -14,8 +15,8 @@ export const AsideMenu = (props: {pokemon: any}) => {
                         <h6 className='small text-muted'>Nº 385</h6>
                         <h4>Charmander</h4>
                         <div className='row mx-0 justify-content-center'>
-                            <CardTag color='blue'>WATER</CardTag>
-                            <CardTag color='grey'>STEEL</CardTag>
+                            <PokemonTag color='blue'>WATER</PokemonTag>
+                            <PokemonTag color='grey'>STEEL</PokemonTag>
                         </div>
                         <p className='my-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta modi possimus itaque officiis quaerat consectetur fugiat aliquam porro, vitae ducimus nulla doloribus </p>
                         <section className='detail-section'>

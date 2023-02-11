@@ -5,6 +5,7 @@ import React from 'react';
 import { Dashboard } from './pages/Dashboard/Dashboard';
 import { TeamsPage } from './pages/TeamsPage/TeamsPage';
 import { withRouter } from './services/HOC/withRouter';
+import { PokemonPage } from './pages/PokemonPage/PokemonPage';
 
 //? INFINITE SCROLLING
 
@@ -18,6 +19,7 @@ function App() {
           <Route path='/' element={<Dashboard />}>
             <Route path='/' element={<ListPageWithRouter />}></Route>
             <Route path='/teste' element={<TeamsPage />}></Route>
+            <Route path='/pokemon' element={<PokemonPage />}></Route>
           </Route>
         </Routes>
       </Router>

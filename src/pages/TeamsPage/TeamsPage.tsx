@@ -6,6 +6,8 @@ export const TeamsPage = () => {
     return (
         <main className='teams-page'>
             <TeamAccordion />
+            <TeamAccordion />
+            <TeamAccordion />
         </main>
     )
 }

@@ -3,7 +3,8 @@ import {Button} from '@mui/material'
 
 import './PokemonCard.scss'
 
-import { CardBody, CardImage, CardTag } from '../CardBody/CardBody';
+import { CardBody, CardImage } from '../CardBody/CardBody';
+import { PokemonTag } from '../PokemonTag/PokemonTag';
 
 export const PokemonCard = (props: {
     onHover?: (pokemon: any) => void, 
@@ -12,6 +13,7 @@ export const PokemonCard = (props: {
 }) => {
     return (
         <Button
+            href='/pokemon'
             className={`pokemon-card-btn p-0 ${props.size ?? 'normal-card'}`} 
             sx={{borderRadius: '30px', marginTop: '50px'}}
             onMouseEnter={() => props.onHover && props.onHover({})}
@@ -22,8 +24,8 @@ export const PokemonCard = (props: {
                 <h6 className='card-index text-muted'>Nº 385</h6>
                 <h4 className='card-pokemon-name'>Charmander</h4>
                 <div className='d-flex justify-content-center'>
-                    <CardTag color='green'>GRASS</CardTag>
-                    <CardTag color='red'>FIRE</CardTag>
+                    <PokemonTag color='green'>GRASS</PokemonTag>
+                    <PokemonTag color='red'>FIRE</PokemonTag>
                 </div>
             </CardBody>
         </Button>
