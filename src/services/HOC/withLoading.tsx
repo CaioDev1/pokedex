@@ -17,7 +17,7 @@ export const withLoading = <WrappedParam extends object, LoadingParam extends ob
 
             setTimeout(() => {
                 if(this._isMounted) this.setState({isLoadingComplete: true})
-            }, 1000)
+            }, 500)
         }
 
         componentWillUnmount() {

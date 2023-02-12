@@ -13,7 +13,7 @@ export const TeamAccordion = () => {
                 <h3 className='mx-3 mb-0'>Team 1</h3>
             </AccordionSummary>
             <AccordionDetails className='pb-4'>
-                <PokemonList skeletonParams={{rows: 1, columns: 6}}  pokemonsList={[1, 2, 3, 4, 5, 6]} />
+                <PokemonList justifyContent='center' skeletonParams={{rows: 1, columns: 6}}  pokemonsList={[1, 2, 3, 4, 5, 6]} />
             </AccordionDetails>
         </Accordion>
     )

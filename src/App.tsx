@@ -19,7 +19,7 @@ function App() {
           <Route path='/' element={<Dashboard />}>
             <Route path='/' element={<ListPageWithRouter />}></Route>
             <Route path='/teste' element={<TeamsPage />}></Route>
-            <Route path='/pokemon' element={<PokemonPage />}></Route>
+            <Route path='/pokemon' element={<PokemonPage pokemons={[]} skeletonParams={{rows: 3}} />}></Route>
           </Route>
         </Routes>
       </Router>
