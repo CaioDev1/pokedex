@@ -8,6 +8,7 @@ import './ListPage.scss';
 import { AsideMenu } from '../../components/AsideMenu/AsideMenu';
 import { useRequest } from '../../services/api/useRequest';
 import {PokemonList} from './PokemonList/PokemonList';
+import { IPokemonList } from '../../services/interfaces/pokemonList';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -43,29 +44,26 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-interface IPokemonList {
-    count: number,
-    next: string | null,
-    previous: string | null,
-    results: {name: string, url: string}[]
-}
+
 
 export const ListPage = () => {
     const [currentPokemonPreview, setCurrentPokemonPreview] = useState<any>(null)
+    const [pokemonsList, setPokemonsList] = useState<IPokemonList['results']>([])
+
+
+    const fetchParams = useMemo(() => ({path: `https://pokeapi.co/api/v2/pokemon/?limit=100`, options: {method: 'GET'}}), [])
+    
+    const [fetchedPokemons, error] = useRequest<IPokemonList>(fetchParams)
+
+    /* 
+    const fetchParams = useMemo(() => ({path: `https://pokeapi.co/api/v2/pokemon/?offset=${currentOffset}&limit=${FETCH_STEP}`, options: {method: 'GET'}}), [currentOffset])
+
     const [currentOffset, setCurrentOffset] = useState<number>(1)
     const [hasMore, setHasMore] = useState<boolean>(true);
-    const [pokemonsList, setPokemonsList] = useState<IPokemonList['results']>([])
     const [isLoading, setLoading] = useState<boolean>(true);
     
     const FETCH_STEP: number = 50
 
-   /*  const fetchParams = useMemo(() => ({path: `https://pokeapi.co/api/v2/pokemon/?offset=${currentOffset}&limit=${FETCH_STEP}`, options: {method: 'GET'}}), [currentOffset])
-    
-    const [fetchedPokemons, error] = useRequest<IPokemonList>(fetchParams)
-
-    const useTeasds = () => {
-        return useRequest<IPokemonList>(fetchParams)
-    } */
 
     useEffect(() => {
         handleFetch() 
@@ -73,10 +71,10 @@ export const ListPage = () => {
 
     async function handleFetch() {
         setLoading(true)
-       /*  setPokemonsList(value => ([...value, ...[{name: 'asdfa', url: 'sadfasdf'}]]))
+        setPokemonsList(value => ([...value, ...[{name: 'asdfa', url: 'sadfasdf'}]]))
         // setPokemonsList(value => ([...value, ...[1]]...((fetchedPokemons as IPokemonList)?.results ?? [])])))
 
-        if(pokemonsList.length > 1200) setHasMore(false) */
+        if(pokemonsList.length > 1200) setHasMore(false)
     
         const POKEAPI_URL = 'https://pokeapi.co/api/v2/pokemon';
         const response = await fetch(`${POKEAPI_URL}?offset=${currentOffset}&limit=${FETCH_STEP}`);
@@ -91,21 +89,20 @@ export const ListPage = () => {
         }, 1000)
         setPokemonsList(list =>  [...list, ...data.results]);
 
-    }
+    } */
 
     async function handlePokemonCardHover(pokemon: any) {
         setCurrentPokemonPreview(pokemon)
     }
 
-    function fetchPokemons(page: number) {
+    /* function fetchPokemons(page: number) {
         console.log(page, hasMore, isLoading)
 
         setCurrentOffset(page * FETCH_STEP)
-    }
+    } */
 
     return (
         <Fragment>
-            {/* <div>{fetchedPokemons?.toString()}</div> */}
             <main className='list-page' style={{padding: '2rem 0'}}>
                 <Paper elevation={20} className='mb-3' style={{borderRadius: 15, overflow: 'hidden'}}>
                     <Search className='py-3'>
@@ -119,17 +116,26 @@ export const ListPage = () => {
                         />
                     </Search>
                 </Paper>
-                <InfiniteScroll
+                {/* <InfiniteScroll
                     pageStart={1}
                     step={FETCH_STEP}
                     loadMore={fetchPokemons}
                     hasMore={hasMore && !isLoading}
                     threshold={100}
-                >
-                    <PokemonList handlePokemonCardHover={handlePokemonCardHover} pokemonsList={pokemonsList} />
-                </InfiniteScroll>
+                > */}
+                    {
+                        !error
+                        ? <PokemonList handlePokemonCardHover={handlePokemonCardHover} pokemonsList={fetchedPokemons as IPokemonList} />
+                        : ''
+                    }
+                    
+                {/* </InfiniteScroll> */}
             </main>
-            <AsideMenu pokemon={currentPokemonPreview} />
+            {
+                !error && currentPokemonPreview
+                ? <AsideMenu pokemon={currentPokemonPreview} />
+                : ''
+            }
         </Fragment>
     )
 }

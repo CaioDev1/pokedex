@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useApiContext } from "./apiProvider"
 
-export const useRequest = <T extends object>(request: {path: string, options: RequestInit}) => {
+export const useRequest = <T extends object>(request: {path: string, options?: RequestInit}) => {
     const [data, setData] = useState<T>()
     const [error, setError] = useState<string | null>()
 

@@ -80,9 +80,9 @@ export const Page = (pokemon: IPokemonPageProps) => {
                         </div>
                     </CardBody>
                     <section className='py-4 row mx-0'>
-                        <PokemonTag color='red'>FIRE</PokemonTag>
-                        <PokemonTag color='red'>FLYING</PokemonTag>
-                        <PokemonTag color='red'>ICE</PokemonTag>
+                        <PokemonTag type='fire'>FIRE</PokemonTag>
+                        <PokemonTag type='fire'>FLYING</PokemonTag>
+                        <PokemonTag type='fire'>ICE</PokemonTag>
                     </section>
                 </div>
             </main>
@@ -96,8 +96,8 @@ export const Page = (pokemon: IPokemonPageProps) => {
                         <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png' alt="" />
                         <span className='pokemon-name d-flex my-2'><h4 className='mb-0'>Bulbasair</h4> <span className='px-2'>N° 0001</span></span>
                         <section className='row mx-0'>
-                            <PokemonTag color='red'>FIRE</PokemonTag>
-                            <PokemonTag color='red'>FLYING</PokemonTag>
+                            <PokemonTag type='fire'>FIRE</PokemonTag>
+                            <PokemonTag type='fire'>FLYING</PokemonTag>
                         </section>
                     </div>
                     <ArrowForwardIos fontSize='large' />
@@ -105,8 +105,8 @@ export const Page = (pokemon: IPokemonPageProps) => {
                         <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png' alt="" />
                         <span className='pokemon-name d-flex my-2'><h4 className='mb-0'>Bulbasair</h4> <span className='px-2'>N° 0001</span></span>
                         <section className='row mx-0'>
-                            <PokemonTag color='red'>FIRE</PokemonTag>
-                            <PokemonTag color='red'>FLYING</PokemonTag>
+                            <PokemonTag type='fire'>FIRE</PokemonTag>
+                            <PokemonTag type='fire'>FLYING</PokemonTag>
                         </section>
                     </div>
                     <ArrowForwardIos fontSize='large' />
@@ -114,8 +114,8 @@ export const Page = (pokemon: IPokemonPageProps) => {
                         <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png' alt="" />
                         <span className='pokemon-name d-flex my-2'><h4 className='mb-0'>Bulbasair</h4> <span className='px-2'>N° 0001</span></span>
                         <section className='row mx-0'>
-                            <PokemonTag color='red'>FIRE</PokemonTag>
-                            <PokemonTag color='red'>FLYING</PokemonTag>
+                            <PokemonTag type='fire'>FIRE</PokemonTag>
+                            <PokemonTag type='fire'>FLYING</PokemonTag>
                         </section>
                     </div>
                 </section>
