@@ -6,7 +6,7 @@ import './PokemonCard.scss'
 import { CardBody, CardImage } from '../CardBody/CardBody';
 import { PokemonTag } from '../PokemonTag/PokemonTag';
 import { IPokemonList } from '../../services/interfaces/pokemonList';
-import { useRequest } from '../../services/api/useRequest';
+import { useFetch } from '../../services/api/useFetch';
 
 export const PokemonCard = (props: {
     onHover?: (pokemon: any) => void, 
@@ -14,16 +14,16 @@ export const PokemonCard = (props: {
     size?: 'normal-card' | 'small-card',
     params: IPokemonList['results'][0]
 }) => {
-    const fetchParams = useMemo(() => ({path: props.params.url}), [props.params.url])
-    const [pokemon, error] = useRequest<any>({path: props.params.url})
+    // const fetchParams = useMemo(() => (), [props.params.url])
+    const {data: pokemon, error} = useFetch<any>({path: props.params.url})
 
     return (
         pokemon
         ?
             <Button
-                href='/pokemon'
+                href={`/pokemon/${pokemon.id}`}
                 className={`pokemon-card-btn p-0 ${props.size ?? 'normal-card'}`} 
-                sx={{borderRadius: '30px', marginTop: '50px'}}
+                sx={{borderRadius: '30px', marginTop: '50px', width: '100%'}}
                 onMouseEnter={() => props.onHover && props.onHover(pokemon)}
                 onMouseOut={() => props.onMouseOut && props.onMouseOut()}
             >

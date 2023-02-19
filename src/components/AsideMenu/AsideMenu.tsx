@@ -1,14 +1,13 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import {Box, Fade} from '@mui/material'
 import { CardBody, CardImage } from '../CardBody/CardBody'
 
 import './AsideMenu.scss'
 import { PokemonTag } from '../PokemonTag/PokemonTag'
-import { useRequest } from '../../services/api/useRequest'
+import { useFetch } from '../../services/api/useFetch'
 
 export const AsideMenu = (props: {pokemon: any}) => {
-    const fetchParams = useMemo(() => ({path: props.pokemon.species.url}), [props.pokemon.species.url])
-    const [pokemonDetails, error] = useRequest<any>({path: props.pokemon.species.url})
+    const {data: pokemonDetails, error} = useFetch<any>({path: props.pokemon.species.url})
 
     return (
         props.pokemon && pokemonDetails
@@ -19,7 +18,7 @@ export const AsideMenu = (props: {pokemon: any}) => {
                     <CardBody cssClass={['side-menu']} style={{paddingTop: '5rem'}}>
                         <CardImage topPosition={-70} width='50%' src={props.pokemon.sprites.front_default} />
                         <h6 className='small text-muted'>Nº {props.pokemon.order}</h6>
-                        <h4>Charmander</h4>
+                        <h4>{props.pokemon.name}</h4>
                         {/*! NEED TO BE OPTIMIZED  */}
                         <div className='row mx-0 justify-content-center'>
                             {
@@ -40,7 +39,7 @@ export const AsideMenu = (props: {pokemon: any}) => {
                         <section className='detail-section'>
                             <article className='d-flex flex-column'>
                                 <h6 className='section-title'>HEIGHT</h6>
-                                <span>{props.pokemon.height}M</span>
+                                <span>{props.pokemon.height}F</span>
                             </article>
                             <article className='d-flex flex-column'>
                                 <h6 className='section-title'>WEIGHT</h6>

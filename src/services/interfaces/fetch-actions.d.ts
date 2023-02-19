@@ -1,0 +1,1 @@
+declare type FETCH_ACTIONS = 'UNSTARTED' | 'LOADING' | 'COMPLETED'

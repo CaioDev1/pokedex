@@ -8,8 +8,8 @@ import { ApiProvider } from './services/api/apiProvider';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+{/* <React.StrictMode> */} //? Executing hooks twice on load
 root.render(
-  <React.StrictMode>
     <ApiProvider><App /></ApiProvider>
-  </React.StrictMode>
 );
+  {/* </React.StrictMode> */}
